@@ -4,10 +4,13 @@ from whoosh.fields import Schema, TEXT, ID, STORED
 from whoosh import index
 from whoosh.qparser import QueryParser, OrGroup
 import os
+from dotenv import load_dotenv
 
 app = FastAPI()
 
-MY_TOKEN = 'pk.eyJ1IjoidW5hdmlnYXRlIiwiYSI6ImNsaWJoc2l1ODBkbHEzZW11emw0cGZucTAifQ.otIbJBL8CWmaA9dGYNkZHA'
+# use dotdev to get the token from env file
+load_dotenv()
+MY_TOKEN = os.getenv("MY_TOKEN")
 
 # Create the schema for the index
 BUILDINGS_SCHEMA = Schema(
